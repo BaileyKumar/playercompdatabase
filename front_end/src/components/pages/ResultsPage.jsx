@@ -10,6 +10,8 @@ import { Chart, Filler } from 'chart.js';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DownloadIcon from '@mui/icons-material/Download';
 import { saveAs } from 'file-saver';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import {
   List,
   ListItem,
@@ -24,7 +26,8 @@ class ResultsPage extends StateSwitchComponent {
     super(props);
     Chart.register(Filler);
     this.back = this.back.bind(this);
-    this.state = {settings: []}
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {settings: [], checked: false}
     var playerInfo = this.mainSiteComponent.state.playerInfo
     var ogPlayerName = this.mainSiteComponent.state.originalPlayerName
     var nameMap = this.mainSiteComponent.state.nameMap
@@ -80,8 +83,11 @@ class ResultsPage extends StateSwitchComponent {
    var chart = document.getElementById(id);
     chart.toBlob(function (blob) {
     saveAs(blob, id+".png")
-})
-
+  })
+  }
+  handleChange(event){
+    this.setState({checked: !event.target.checked})
+    console.log(this.state)
   }
 
 /*  state = { settings: [{ id: "1", open: false }, { id: "2", open: false },{ id: "3", open: false }] };*/
@@ -125,6 +131,7 @@ class ResultsPage extends StateSwitchComponent {
     };
     return (
       <div style={{ marginRight: "15px" }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', p: 1, m:1, justifyContent: 'space-between' }}>
       <IconButton aria-label="delete" onClick={this.back}     style={{
         borderRadius: 35,
         fontSize: "24px",
@@ -133,10 +140,18 @@ class ResultsPage extends StateSwitchComponent {
 >
         <ArrowBackIcon /> &nbsp; Back
       </IconButton>
+      <FormControlLabel control=
+      {<Switch
+           defaultChecked
+           onChange={this.handleChange}
+           inputProps={{ 'aria-label': 'controlled' }}
+         />}
+         label="Show Trait Table"
+        />
+</Box>
       <Typography variant="h6" align = 'center' >
       Click on a Name to Expand. Number to the Right is the Similarity Score. Values in the Radar Chart is the Percentile (e.g. 0.9 = top 90%)
       </Typography>
-
         <List component="nav">
           {playerObjects.map(each => (
             <React.Fragment key={each.id}>
@@ -164,9 +179,9 @@ class ResultsPage extends StateSwitchComponent {
                 <DownloadIcon /> Download Chart
               </IconButton>
               <Box sx={{ display: 'flex', flexDirection: 'row-reverse', p: 1, m:1 }}>
+  {!this.state.checked && <CreateTable  sx={{ flexGrow: 1 }} playerInfo={each.info} originalInfo = {this.mainSiteComponent.state.originalinfo} originalPlayerName = {this.mainSiteComponent.state.originalPlayerName} playerName = {each.realName}/>}
 
-              <CreateTable  sx={{ flexGrow: 1 }} playerInfo={each.info} originalInfo = {this.mainSiteComponent.state.originalinfo} originalPlayerName = {this.mainSiteComponent.state.originalPlayerName} playerName = {each.realName}/>
-                <Radar data={each.data} options={graphOptions} id={each.nameHeader} />
+                <Radar data={each.data} options={graphOptions} id={each.nameHeader} height={800} weight ={800} />
                 </Box>
               </Collapse>
             </React.Fragment>

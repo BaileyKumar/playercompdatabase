@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Slider from '@mui/material/Slider';
+import fetch from 'cross-fetch' 
 
 class RegisterPage extends StateSwitchComponent{
   constructor(props){
