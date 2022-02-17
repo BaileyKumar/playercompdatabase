@@ -73,8 +73,8 @@ class ResultsPage extends StateSwitchComponent {
     this.mainSiteComponent = props.mainSiteComponent;
     this.state1 = {
     };
+    window.scrollTo(0, 0)/* loads halfway down on mobile for some reason */
   }
-
   back(){
       this.mainSiteComponent.setState({view: 'register'})
   }

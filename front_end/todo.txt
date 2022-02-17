@@ -1,3 +1,0 @@
-clean up look on mobile
-fix data by adding pro result adjustment
-handle bad/not found input
