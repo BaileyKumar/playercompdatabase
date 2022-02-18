@@ -90,7 +90,6 @@ class ResultsPage extends StateSwitchComponent {
     console.log(this.state)
   }
 
-/*  state = { settings: [{ id: "1", open: false }, { id: "2", open: false },{ id: "3", open: false }] };*/
 
   handleClick = id => {
     this.setState(state => ({
@@ -132,23 +131,19 @@ class ResultsPage extends StateSwitchComponent {
     return (
       <div style={{ marginRight: "15px" }}>
       <Box sx={{ display: 'flex', flexDirection: 'row', p: 1, m:1, justifyContent: 'space-between' }}>
-      <IconButton aria-label="delete" onClick={this.back}     style={{
-        borderRadius: 35,
-        fontSize: "24px",
-        color : "#000000"
-    }}
->
-        <ArrowBackIcon /> &nbsp; Back
-      </IconButton>
-      <FormControlLabel control=
-      {<Switch
-           defaultChecked
-           onChange={this.handleChange}
-           inputProps={{ 'aria-label': 'controlled' }}
-         />}
-         label="Show Trait Table"
-        />
-</Box>
+        <IconButton aria-label="delete" onClick={this.back}     style={{
+          borderRadius: 35,
+          fontSize: "24px",
+          color : "#000000"}}>
+          <ArrowBackIcon /> &nbsp; Back
+        </IconButton>
+        <FormControlLabel control=
+        {<Switch
+             defaultChecked
+             onChange={this.handleChange}
+             inputProps={{ 'aria-label': 'controlled' }}/>}
+           label="Show Trait Table"/>
+      </Box>
       <Typography variant="h6" align = 'center' >
       Click on a Name to Expand. Number to the Right is the Similarity Score. Values in the Radar Chart is the Percentile (e.g. 0.9 = top 90%)
       </Typography>
@@ -161,17 +156,16 @@ class ResultsPage extends StateSwitchComponent {
                     fontWeight: 'medium',
                     variant: 'h5',
                     fontSize: 20,
-                  }}
-                  />
+                  }}/>
                   <Typography variant="h6" align = 'center' >
-                  { ((5-each.similarity)*20).toFixed(2)}                  </Typography>
+                    { ((5-each.similarity)*20).toFixed(2)}
+                  </Typography>
               </ListItem>
               <Divider />
               <Collapse
                 in={settings.find(item => item.id === each.id).open}
                 timeout="auto"
-                unmountOnExit
-              >
+                unmountOnExit>
               <IconButton aria-label="delete" onClick={()=>this.saveImage(each.nameHeader)} style={{
                 borderRadius: 35,
                 fontSize: "24px",
@@ -180,7 +174,6 @@ class ResultsPage extends StateSwitchComponent {
               </IconButton>
               <Box sx={{ display: 'flex', flexDirection: 'row-reverse', p: 1, m:1 }}>
   {!this.state.checked && <CreateTable  sx={{ flexGrow: 1 }} playerInfo={each.info} originalInfo = {this.mainSiteComponent.state.originalinfo} originalPlayerName = {this.mainSiteComponent.state.originalPlayerName} playerName = {each.realName}/>}
-
                 <Radar data={each.data} options={graphOptions} id={each.nameHeader} height={800} weight ={800} />
                 </Box>
               </Collapse>

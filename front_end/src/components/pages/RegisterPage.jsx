@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Slider from '@mui/material/Slider';
-import fetch from 'cross-fetch' 
+import fetch from 'cross-fetch'
 
 class RegisterPage extends StateSwitchComponent{
   constructor(props){
@@ -347,8 +347,8 @@ class RegisterPage extends StateSwitchComponent{
           <Slider defaultValue={this.mainSiteComponent.state.originalStateInfo.sliderWeights ? this.mainSiteComponent.state.originalStateInfo.sliderWeights.verticalleap : 1} min={0.25} max={2} step={0.25} valueLabelDisplay="auto"
             onChange={this.handleChangeVerticalLeapSlider.bind(this)}
             aria-label="Always visible"
-            getAriaValueText={this.valueText}
-           />
+            getAriaValueText={this.valueText}/>
+
            </FormControl>
 
            <FormControl       sx={{ p: 1, m:1 }}>
@@ -362,13 +362,12 @@ class RegisterPage extends StateSwitchComponent{
             autoComplete="Broad Jump"
             helperText="Ex. 125"
             defaultValue = {this.mainSiteComponent.state.originalStateInfo.broadjump}
-            onChange = {this.handleChangeBroadJump.bind(this)}
-          />
+            onChange = {this.handleChangeBroadJump.bind(this)}/>
+
           <Slider defaultValue={this.mainSiteComponent.state.originalStateInfo.sliderWeights ? this.mainSiteComponent.state.originalStateInfo.sliderWeights.broadjump : 1} min={0.25} max={2} step={0.25} valueLabelDisplay="auto"
             onChange={this.handleChangeBroadJumpSlider.bind(this)}
             aria-label="Always visible"
-            getAriaValueText={this.valueText}
-           />
+            getAriaValueText={this.valueText}/>
            </FormControl>
 
            <FormControl       sx={{ p: 1, m:1 }}>
@@ -382,13 +381,12 @@ class RegisterPage extends StateSwitchComponent{
             autoComplete="Shuttle Time"
             helperText="Ex. 4.51"
             defaultValue = {this.mainSiteComponent.state.originalStateInfo.shuttle}
-            onChange = {this.handleChangeShuttle.bind(this)}
-          />
+            onChange = {this.handleChangeShuttle.bind(this)}/>
+
           <Slider defaultValue={this.mainSiteComponent.state.originalStateInfo.sliderWeights ? this.mainSiteComponent.state.originalStateInfo.sliderWeights.shuttle : 1} min={0.25} max={2} step={0.25} valueLabelDisplay="auto"
             onChange={this.handleChangeShuttleSlider.bind(this)}
             aria-label="Always visible"
-            getAriaValueText={this.valueText}
-           />
+            getAriaValueText={this.valueText}/>
            </FormControl>
 
            <FormControl       sx={{ p: 1, m:1 }}>
@@ -402,38 +400,32 @@ class RegisterPage extends StateSwitchComponent{
             autoComplete="3 Cone"
             helperText="Ex. 7.15"
             defaultValue = {this.mainSiteComponent.state.originalStateInfo.threecone}
-            onChange = {this.handleChangeThreeCone.bind(this)}
-          />
+            onChange = {this.handleChangeThreeCone.bind(this)}/>
+
           <Slider defaultValue={this.mainSiteComponent.state.originalStateInfo.sliderWeights ? this.mainSiteComponent.state.originalStateInfo.sliderWeights.threecone : 1} min={0.25} max={2} step={0.25} valueLabelDisplay="auto"
             onChange={this.handleChangeThreeConeSlider.bind(this)}
             aria-label="Always visible"
-            getAriaValueText={this.valueText}
-           />
+            getAriaValueText={this.valueText}/>
            </FormControl>
 
 
           <Slider defaultValue={this.mainSiteComponent.state.originalStateInfo.year ?? 2000} min={1987} max={2021} valueLabelDisplay="on"
             onChange={this.handleYearChange.bind(this)}
             aria-label="Always visible"
-            getAriaValueText={this.valueText}
-           />
+            getAriaValueText={this.valueText}/>
            <Typography id="track-false-slider" gutterBottom>
-      Use The Slider Above To Determine The Oldest Draft Class To Get Prospects From
-    </Typography>
-
-
-            <Button
+            Use The Slider Above To Determine The Oldest Draft Class To Get Prospects From
+          </Typography>
+          <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
-              onClick={this.search}
-            >
+              onClick={this.search}>
               Search
             </Button>
           </Box>
-          </div>
-
+      </div>
     );
   }
 }

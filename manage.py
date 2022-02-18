@@ -4,22 +4,17 @@ from scipy import stats
 import re
 
 def get_names(test_player_info):
-    # (name,position,rest)
 
-    # print(test_player_info)
     player_info = list(test_player_info.values())
     position = player_info[1]
     player_bank_data = get_player_data(position,player_info[-2])
     trait_weights = player_info[-1]
     trait_weights = list(trait_weights.values())
     player_trait = player_info[2:-2]
-    # print(player_trait)
     player_trait = [float(x) if x else None for x in player_trait]
     trait_weights = [float(x) for x in trait_weights]
     if (not player_bank_data):
         return None
-    # print(len(player_bank_data))
-    # print(trait_weights)
     percentiles = [[] for i in range(10)]
     mape_map = {}
     traits_map = {}
@@ -27,19 +22,16 @@ def get_names(test_player_info):
     for element in player_bank_data:
         count = 0
         mape = 0
-        # print(element[4:])
         for trait in element[4:]:
             if trait:
                 percentiles[count].append(trait)
                 if player_trait[count]:
-                # print(((trait-test[count])/(trait)))
                     mape += abs((trait-player_trait[count])/(trait))*trait_weights[count]
                 else:
                     mape+=0.05
             else:
                 mape+=0.05
             count+=1
-        # print(mape)
         name = element[1]+" "+str(element[0])+" "+element[2]+" "+element[3]
         mape_map[name] = mape
         traits_map[name] = element[4:]
