@@ -6,4 +6,4 @@ import ReactDOM from 'react-dom';
 
 import {MainSiteComponent} from './components/MainSiteComponent';
 
-ReactDOM.render(<MainSiteComponent state="register"/>, document.getElementById("root"));
+ReactDOM.render(<MainSiteComponent state="search"/>, document.getElementById("root"));

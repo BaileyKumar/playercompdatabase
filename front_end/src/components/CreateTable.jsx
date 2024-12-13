@@ -32,7 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 }));
 const player_rows = []
-const labels = ['Height (in)', 'Weight (lb)', 'Hand Size (in)', 'Arm Length (in)', '40 Time (s)',"Bench Press (reps)", "Vertical Leap (in)", "Broad Jump (in)", "Shuttle Time (s)", "3 Cone (s)"]
+const labels = ['Height (in)', 'Weight (lb)', 'Hand Size (in)', 'Arm Length (in)', '40 Time (s)',"Bench Press (reps)", "Vertical Leap (in)", "Broad Jump (in)", "Shuttle Time (s)", "3 Cone (s)", "Pick Number", "Round", "Value (wAV)"]
 class CreateTable extends React.Component {
   constructor(props){
     super(props)

@@ -1,16 +1,14 @@
 import React from 'react';
 
-
-import {RegisterPage} from './pages/RegisterPage';
+import {SearchPage} from './pages/SearchPage';
 import ResultsPage from './pages/ResultsPage';
-
-
+import TablePage from './pages/TablePage'
+import Header from './Header'
+import Footer from './Footer'
 
 class MainSiteComponent extends React.Component{
   constructor(props) {
     super(props);
-
-
     this.state = {
       view: props.state,
       playerInfo : '',
@@ -22,17 +20,18 @@ class MainSiteComponent extends React.Component{
     };
   }
 
-
-
   render() {
     return (
       <div>
           {/*Select which page to render based on this.state.view}*/}
-        {this.state.view === 'register' ? <RegisterPage mainSiteComponent={this}/> : null}
+        <Header mainSiteComponent={this}/>
+        <br/>
+        <Footer mainSiteComponent={this}/>
+        {this.state.view === 'search' ? <SearchPage mainSiteComponent={this}/> : null}
         {this.state.view === 'results' ? <ResultsPage mainSiteComponent={this}/> : null}
+        {this.state.view === 'table' ? <TablePage mainSiteComponent={this}/> : null}
       </div>
     );
   }
 }
-
 export {MainSiteComponent};
